@@ -4,9 +4,15 @@ from pftracker.models import UnknownCategory
 
 
 class TestCategories:
-    def test_add_category(self, tracker):
-        tracker.add_category("Groceries")
-        assert tracker.list_categories() == ["Groceries"]
+    @pytest.mark.parametrize(
+        "categories",
+        [["Groceries"], ["Salary", "Rent", "Groceries"], [f"category{i}" for i in range(100)]],
+        ids=lambda categories: f"{len(categories)} categories",
+    )
+    def test_add_category(self, tracker, categories):
+        for c in categories:
+            tracker.add_category(c)
+        assert tracker.list_categories() == sorted(categories)
 
     def test_add_same_category_twice(self, tracker):
         tracker.add_category("Groceries")
