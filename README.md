@@ -1,4 +1,4 @@
-# Python Financial Tracker — Test Automation
+# Python Financial Tracker — Test Automation - Unit Tests
 
 Automated tests for a personal finance tracker application, focused on validating financial calculations, transaction management, currency conversion, and data persistence.
 
